@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <table border="2" align="center">
+        <tr>
+            <th>
+                Day
+            </th>
+            <th>
+                Total Workout
+            </th>
+            <th>
+Do Workout
+            </th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>
+                {{i.dailyplan_day }}
+            </td>
+            <td>
+                {{ i.dailyplan_wcount }}
+            </td>
+            <td>
+                <a href="{% url 'webuser:Workout' i.id %}">Do workout</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

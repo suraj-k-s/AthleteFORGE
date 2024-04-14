@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mark Sheet</title>
+</head>
+<body>
+
+  <h2>Report</h2>
+
+  <form id="markForm" method="post">
+    {% csrf_token %}
+    <label for="num1">Enter Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="operation">Select operation:</label>
+    <select id="operation" name="operation" required>
+      <option value="com">Computer Science</option>
+      <option value="mb">Micro Biology</option>
+      <option value="ft">Food Technology</option>
+    </select>
+    <label for="mark1">Enter Mark1:</label>
+    <input type="text" id="mark1" name="mark1" required>
+    <label for="mark2">Enter Mark2:</label>
+    <input type="text" id="mark2" name="mark2" required>
+    <label for="mark3">Enter Mark3:</label>
+    <input type="text" id="mark3" name="mark3" required>
+   
+
+    <button type="submit" > Calculate</button>
+
+
+  <h3>Result: {{result}}</h3>
+   
+  <table border="2">
+    <tr><td>Name</td>
+    <td>{{name}}</td></tr>
+    <tr><td>Department</td>
+    <td>{{dept}}</td></tr>
+    <tr><td>Maerk 1:</td>
+        <td>{{mark1}}</td></tr>
+        <tr><td>Mark 2:</td>
+            <td>{{mark2}}</td></tr>
+            <tr><td>Mark 3:</td>
+                <td>{{mark3}}</td></tr>
+    <tr><td>Average:</td>
+    <td>{{avg}}</td>
+    <tr><td>Grade:</td>
+        <td>{{grade}}</td></tr>
+</table>
+  
+</form>
+
+</body>
+</html>

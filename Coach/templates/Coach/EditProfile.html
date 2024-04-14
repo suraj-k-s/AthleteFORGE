@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+</head>
+<body>
+    <form  method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+        <h2>Edit profile</h2>
+        <tr>
+            <td>
+        <label for="name"> Name:</label></td>
+        <td><input type="text" id="txt_name" name="txt_name" required value="{{data.coach_name}}"></td>
+ </tr>
+
+    <tr>
+        <td>
+            <label for="contact">Contact:</label>
+        </td>
+        <td>
+            <input type="tel" id="txt_contact" name="txt_contact" required value="{{data.coach_contact}}">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="address">Address:</label>
+        </td>
+        <td>
+            <textarea id="txt_address" name="txt_address" required value="{{data.coach_address}}">
+                
+            </textarea>
+           
+        </td>
+    </tr>
+      
+      
+       
+       
+       <tr>
+        <td colspan="2" align="center">
+            <button type="submit">Save</button>
+        <button type="reset"> cancel</button>
+        </td>
+       </tr> 
+    </table>
+    </form>
+</body>
+
+</html>

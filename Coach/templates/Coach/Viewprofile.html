@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Profile</title>
+</head>
+<body>
+    <form  method="post" action="">
+        {% csrf_token %}
+        <table>
+        <h2>PROFILE</h2>
+        <tr>
+           
+            <td>
+                <img src="{{data.coach_photo.url}}" alt="">
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+        <label for="name"> Name:</label></td>
+        <td>{{data.coach_name}}</td>
+ </tr>
+ <tr>
+    <td>
+        <label for="email">Email:</label></td>
+    <td>
+
+        {{data.coach_email}}
+        
+    </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="contact">Contact:</label>
+        </td>
+        <td>
+            {{data.coach_contact}} 
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="address">Adress:</label>
+            <td>
+                {{data.coach_address}}
+            </td>
+        </td>
+    </tr>
+        <tr>
+            <td>
+                <label for="gender">Gender:</label>
+            </td>
+            <td>
+                {{data.coach_gender}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="dob">Date of Birth:</label>
+            </td>
+            <td>
+                {{data.coach_dob}}            
+            </td>
+        </tr>
+       
+       <tr>
+        <td>District:</td>
+        <td>
+            {{data.place.district.district_name}}
+        </td>
+       </tr>
+       <tr>
+        <td>Place:</td>
+        <td>
+            {{data.place.place_name}}
+        </td>
+       </tr>
+       
+
+   
+       <tr>
+        <td colspan="2" align="center">
+            <button><a href="{% url 'webcoach:EditCoach'  %}">Edit Profile</a></button>
+            <button><a href="{% url 'webcoach:EPCoach' %}">Change  password</a></button>
+        
+        </td>
+       </tr> 
+    </table>
+    </form>
+</body>
+
+</html>

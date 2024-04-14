@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="path/to/your/css/styles.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    .par-card{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .head-sec {
+        width: 840px;
+        background-color: #6c8cfc;
+        padding: 17px;
+        border-radius: 10px;
+        border-bottom: 1px solid white;
+        margin-left: 8px;
+        margin-top: 8px;
+        display: flex;
+        gap: 10px;
+    }
+    .content {
+        display: flex;
+        gap: 10px;
+        width: 840px;
+    }
+    .option {
+        color:white;
+        font-size: 20px;
+    }
+    .option-content {
+        width: 115px;
+        padding: 10px;
+        background-color: #90caf9;
+        border-radius: 10px;
+        position: absolute;
+        left: 1036px;
+        margin-top: 4px;
+        display: none;
+        transition: transform 3.9s ease-in-out;
+    }
+    .option-selection {
+        display: flex;
+        gap: 5px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .con-card {
+        width: 840px;
+        padding: 24px;
+        border-radius: 10px;
+        background-color: transparent;
+        min-height: 520px;
+    }
+    .message-card {
+        padding: 24px;
+        /* border-radius: 10px; */
+        border-top: 1px solid white;
+    }
+    .message-box {
+        padding: 10px;
+        width: 750px;
+        margin-left: 5px;
+        border: none;
+        background-color: #F5F5F5;
+        border-radius: 10px;
+    }
+    .chat-card {
+        /* background-color: #3f32f41c; */
+        padding: 10px;
+        box-shadow: 0 0 33px;
+        border-radius: 10px;
+    }
+    .btn {
+        background-color: transparent;
+        border: none;
+    }
+    .ic-size {
+        font-size: 20px;
+        color: #6c8cfc;
+    }
+    .font {
+        color: white;
+        font-size: 20px;
+        font-family: Poor Richard;
+    }
+    .r-mess {
+        padding: 5px;
+        background-color: #BBDEFB;
+        border-radius: 10px;
+        max-width: 555px;
+        width: fit-content;
+    }
+    .s-mess {
+        padding: 5px;
+        background-color: #90caf9;
+        border-radius: 10px;
+        max-width: 555px;
+        width: fit-content;
+    }
+    .par-r-mess {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-bottom: 5px;
+    }
+    .par-s-mess {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 5px;
+        align-items: flex-end;
+    }
+    .s-time {
+        padding: 2px;
+        font-size: 9px;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .r-time {
+        padding: 2px;
+        font-size: 9px;
+    }
+    .con-width {
+        min-width: 35px;
+    }
+    .scroll-con {
+        overflow-y: scroll;
+        height: 581px;
+    }
+    .scroll-con::-webkit-scrollbar {
+      display: none;
+    }
+
+
+    .sk-folding-cube {
+        margin: 20px auto;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: rotateZ(45deg);
+                transform: rotateZ(45deg);
+    }
+
+    .sk-folding-cube .sk-cube {
+        float: left;
+        width: 50%;
+        height: 50%;
+        position: relative;
+        -webkit-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+                transform: scale(1.1); 
+    }
+    .sk-folding-cube .sk-cube:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #333;
+        -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
+                animation: sk-foldCubeAngle 2.4s infinite linear both;
+        -webkit-transform-origin: 100% 100%;
+            -ms-transform-origin: 100% 100%;
+                transform-origin: 100% 100%;
+    }
+    .sk-folding-cube .sk-cube2 {
+        -webkit-transform: scale(1.1) rotateZ(90deg);
+                transform: scale(1.1) rotateZ(90deg);
+    }
+    .sk-folding-cube .sk-cube3 {
+        -webkit-transform: scale(1.1) rotateZ(180deg);
+                transform: scale(1.1) rotateZ(180deg);
+    }
+    .sk-folding-cube .sk-cube4 {
+        -webkit-transform: scale(1.1) rotateZ(270deg);
+                transform: scale(1.1) rotateZ(270deg);
+    }
+    .sk-folding-cube .sk-cube2:before {
+        -webkit-animation-delay: 0.3s;
+                animation-delay: 0.3s;
+    }
+    .sk-folding-cube .sk-cube3:before {
+        -webkit-animation-delay: 0.6s;
+                animation-delay: 0.6s; 
+    }
+    .sk-folding-cube .sk-cube4:before {
+        -webkit-animation-delay: 0.9s;
+                animation-delay: 0.9s;
+    }
+    @-webkit-keyframes sk-foldCubeAngle {
+        0%, 10% {
+            -webkit-transform: perspective(140px) rotateX(-180deg);
+                    transform: perspective(140px) rotateX(-180deg);
+            opacity: 0; 
+        } 25%, 75% {
+            -webkit-transform: perspective(140px) rotateX(0deg);
+                    transform: perspective(140px) rotateX(0deg);
+            opacity: 1; 
+        } 90%, 100% {
+            -webkit-transform: perspective(140px) rotateY(180deg);
+                    transform: perspective(140px) rotateY(180deg);
+            opacity: 0; 
+        } 
+    }
+
+    @keyframes sk-foldCubeAngle {
+        0%, 10% {
+            -webkit-transform: perspective(140px) rotateX(-180deg);
+                    transform: perspective(140px) rotateX(-180deg);
+            opacity: 0; 
+        } 25%, 75% {
+            -webkit-transform: perspective(140px) rotateX(0deg);
+                    transform: perspective(140px) rotateX(0deg);
+            opacity: 1; 
+        } 90%, 100% {
+            -webkit-transform: perspective(140px) rotateY(180deg);
+                    transform: perspective(140px) rotateY(180deg);
+            opacity: 0; 
+        }
+    }
+    .blur-page {
+        margin-top: -10px;
+        height: 100%;
+        width: 99%;
+        background-color: rgba(255, 255, 255, 0.729);
+        position: absolute;
+    }
+    .profile {
+        display: none;
+        width: 100%;
+        background-color: #ffffffed;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+    }
+    .profile-close {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .cl-ic {
+        font-size: 27px;
+        color: #d4d2d2;
+    }
+    .date-con {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: gray;
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+</style>
+<body>
+    <div class="blur-page" id="b-page">
+        <div class="sk-folding-cube">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+        </div>
+    </div>
+    <div class="profile" id="profile">
+        <div>
+            <div class="profile-close" onclick="close_profile()">
+                <i class="fa-regular fa-circle-xmark cl-ic"></i>
+            </div>
+            <div>
+                <img src="{{user.user_photo.url}}" width="300px" height="300px" alt="">
+            </div>
+        </div>
+    </div>    
+    <div class="par-card">
+        <div class="chat-card">
+            <div class="head-sec" id="changeable">
+                <div class="content">
+                    <div  onclick="open_profile()">
+                        <img src="{{user.user_photo.url}}" width="40px" height="40px" style="border-radius: 50%;" alt="">
+                    </div>
+                    <div class="font">
+                        {{user.user_name}}
+                        <input type="hidden" name="txt_id" id="txt_id" value="{{user.id}}">
+                    </div>
+                </div>
+                <div>
+                    <button style="background-color: transparent;border: none;" onclick="handleOption()"><i class="fa-solid fa-ellipsis-vertical option"></i></button>
+                </div>
+            </div>
+            <div class="option-content" id="option-div">
+                <div class="option-selection">
+                    <div><a  style="text-decoration: none;color: white;" onclick="clearchat()"><i class="fa-solid fa-broom"></i>&nbsp;Clear Chat</a></div>
+                </div>
+            </div>
+           <div class="scroll-con" id="sc-down">
+            <div class="con-card" id="conversation" onclick="date_see()">
+                
+            </div>
+           </div>
+            <div class="message-card">
+                <label for="photo_data">
+                    <i class="fas fa-paperclip ic-size"></i>
+                </label>
+                <input type="file" name="photo_data" id="photo_data" style="display: none;" onchange="sendChat('{{user.id}}')">
+                <input type="text" name="txt_msg" class="message-box" id="txt_msg" placeholder="Type your message..." autocomplete="off">
+                <button class="btn" type="submit" onclick="sendChat('{{user.id}}')"><i class="fas fa-paper-plane ic-size"></i></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+      document.getElementById("b-page").style.display = "none"
+      document.getElementById("profile").style.display = "none"
+      var dateval = false
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                // Check if this cookie string begins with the name we want
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+
+    function sendChat(tid) {
+        var msg = document.getElementById("txt_msg").value;
+        var fileInput = document.getElementById("photo_data");
+        var file = fileInput.files[0];
+        if (msg.trim() === "" && !file)
+        {
+
+        }
+        else
+        {
+            var fd = new FormData()
+            fd.append("file",file)
+            fd.append("tid",tid)
+            fd.append("msg",msg)
+            var ur = "{% url 'webcoach:ajaxchat' %}"
+            var csrftoken = getCookie('csrftoken');
+            $.ajax({
+                type:'POST',
+                url: ur,
+                data: fd,
+                processData: false,
+                contentType: false,
+                headers: { "X-CSRFToken": csrftoken }, // Include CSRF token in headers
+                success: function (data) {
+                    // $("#selplace").html(data);
+                    document.getElementById('txt_msg').value = "" 
+                    document.getElementById("photo_data").value = ""
+                    $('#sc-down').animate({scrollTop: $('#sc-down')[0].scrollHeight});
+                    var element = document.getElementById("sc-down");
+                    element.scrollTop = element.scrollHeight - element.clientHeight;
+                },
+            });
+        }
+    };
+
+    function viewChat() {
+        var id = document.getElementById("txt_id").value
+        var ur = "{% url 'webcoach:ajaxchatview' %}"
+        $.ajax({
+            url: ur,
+            data: { tid: id, },
+            success: function (data) {
+                $("#conversation").html(data);
+            }
+        });
+    };
+
+    viewChat()
+    setInterval(viewChat,800)
+
+    function handleOption() {
+        let Check = document.getElementById('option-div')
+        if(Check.style.display === "none" )
+        document.getElementById("option-div").style.display = "block"
+        else
+        document.getElementById("option-div").style.display = "none"
+
+    }
+
+    function clearchat() {
+        var id = document.getElementById("txt_id").value
+        var ur = "{% url 'webcoach:clearchat' %}"
+        document.getElementById("b-page").style.display = "block"
+        $.ajax({
+            url: ur,
+            data: { tid: id, },
+            success: function (data) {
+                // console.log(data);
+                document.getElementById("b-page").style.display = "none"
+                alert(data)
+                location.reload()
+            }
+        });
+    };
+
+    function close_profile() {
+        document.getElementById("profile").style.display = "none"
+    }
+
+    function open_profile() {
+        document.getElementById("profile").style.display = "flex"
+    }
+
+    // function date_see() {
+    //     dateval = !dateval
+    //     if (dateval == true)
+    //     {
+    //         var elements = document.getElementsByClassName("date-con");
+    //         for (var i = 0; i < elements.length; i++) {
+    //             elements[i].style.display = "flex";
+    //         }
+    //     }
+    //     else
+    //     {
+    //         var elements = document.getElementsByClassName("date-con");
+    //         for (var i = 0; i < elements.length; i++) {
+    //             elements[i].style.display = "none";
+    //         }
+    //     }
+    // }
+
+</script>

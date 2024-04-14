@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data" action="">
+        {% csrf_toekn %}
+        <table border="2" align="center">
+            <tr>
+                <td>
+                    Title:
+                </td>
+                <td>
+                    <input type="text" id="txt_title" name="txt_title" placeholder="Enter the comaplint title" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Content:
+                </td>
+                <td>
+                    <textarea id="txt_content" name="txt_content" placeholder="Enter the complaint content" required>
+                        
+                    </textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" id="btn_save" value="Submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br>
+    <br>
+    <table border="2" align="center">
+        <r>
+            <th>SL.No</th>
+            <th>Name</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Reply</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</body>
+</html>

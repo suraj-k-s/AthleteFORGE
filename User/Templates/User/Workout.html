@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Data</title>
+    <style>
+        .blur {
+            filter: blur(2px); /* Apply blur effect to blurred elements */
+        }
+    </style>
+</head>
+<body>
+    <table border="2" align="center">
+        <tr>
+            <th>Sl. No.</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>File</th>
+            <th>Checkbox</th>
+        </tr>
+        {% for workout, checkbox_exists in data %}
+        <tr id="row{{ forloop.counter }}" class="{% if not checkbox_exists and forloop.counter > 1 %} blur {% endif %}">
+            <td>{{ forloop.counter }}</td>
+            <td>{{ workout.workout_name }}</td>
+            <td>{{ workout.workout_discription }}</td>
+            <td><img src="{{ workout.workout_file.url }}" width="100" height="100" alt=""></td>
+            <td>
+                {% if checkbox_exists %}
+                <input type="checkbox" id="checkbox{{ workout.id }}" name="checkbox" checked onclick="todo('{{ workout.id }}', '{{ forloop.counter }}')">
+                {% else %}
+                <input type="checkbox" id="checkbox{{ workout.id }}" name="checkbox" onclick="todo('{{ workout.id }}', '{{ forloop.counter }}')">
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div style="margin-top: 20px;">
+        <progress id="progressBar" value="{{ progress_percentage }}" max="100"></progress>
+        <span id="progressLabel">{{ progress_percentage }}%</span>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var progressPercentage = {{ progress_percentage }};
+            $('#progressBar').val(progressPercentage);
+            $('#progressLabel').text(progressPercentage + '%');
+        });
+
+        function todo(id, rowId) {
+            var ur = "{% url 'webuser:AjaxCheckbox' %}";
+
+            // Check if the row is blurred
+            if ($('#row' + rowId).hasClass('blur')) {
+                return; // Do nothing if the row is blurred
+            }
+
+            $.ajax({
+                url: ur,
+                data: { wid: id },
+                success: function (data) {
+                    // Blur clicked row
+                    $('#row' + rowId).addClass('blur');
+                    // Unblur next row if it exists
+                    var nextRowId = parseInt(rowId) + 1;
+                    if ($('#row' + nextRowId).length > 0) {
+                        $('#row' + nextRowId).removeClass('blur');
+                    }
+                },
+            });
+        }
+    </script>
+</body>
+</html>

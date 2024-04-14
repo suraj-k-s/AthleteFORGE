@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="2" align="center">
+        <tr>
+            <th>
+                Sl.No
+            </th>
+            <th>
+                Event Name
+            </th>
+            <th>
+                Duration
+            </th>
+            <th>
+                Details
+            </th>
+            <th>
+                Action
+            </th>
+            <th>
+                Dailyplane
+            </th>
+        </tr>
+        {% for i in tdata %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>
+                {{ i.event.event_name }}
+            </td> 
+            <td>
+                {{ i.training_duration }}
+            </td>
+            <td>
+                {{ i.training_details }}
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <a href="{% url 'webuser:DailyPlan' i.id %}">View Daily PLan</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

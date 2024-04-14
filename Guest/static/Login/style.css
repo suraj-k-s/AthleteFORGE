@@ -1,0 +1,243 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgb(21, 86, 77);
+    background-image: url('../Login/images/jonathan-chng-HgoKvtKpyHA.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-direction: column;
+    gap: 1rem
+  }
+  .container {
+    width: 400px;
+    padding: 30px;
+    background-color: rgba(200, 197, 188, 0.64);
+    border-radius:40px;
+    box-shadow: 10px 10px 20px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  h2 {
+    color: #951212;
+    margin-bottom: 30px;
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: fadeInDown 1s ease;
+  }
+  input[type="text"],
+  input[type="password"] {
+    width: calc(100% - 24px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-sizing: border-box;
+    outline: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: slideIn 1s ease;
+  }
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    background-color: rgb(190, 37, 37);
+    transform: scale(1.02);
+  }
+  input[type="text"]:hover,
+  input[type="password"]:hover {
+    transform: translateY(-3px);
+  }
+  input[type="submit"] {
+    width: calc(100% - 24px);
+    padding: 12px;
+    background-color: #295c14;
+    color: #13df5e;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+    animation: fadeIn 1s ease;
+  }
+  input[type="submit"]:hover {
+    background-color: #316821;
+  }
+  .error-message {
+    color: red;
+    margin-top: 10px;
+    animation: fadeInUp 0.8s ease;
+  }
+  .background-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  .circle {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(221, 18, 18, 0.1);
+    animation: floatCircle 8s linear infinite;
+  }
+  .triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid rgba(126, 59, 59, 0.1);
+    animation: floatTriangle 6s linear infinite;
+  }
+  .triangle1 {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid rgba(126, 59, 59, 0.1);
+    animation: floatTriangle1 6s linear infinite;
+  }
+  .square {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(138, 8, 8, 0.1);
+    animation: floatSquare 10s linear infinite;
+  }
+  .square1 {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(146, 53, 53, 0.1);
+    animation: floatSquare 10s linear infinite;
+  }
+  @keyframes floatCircle {
+    0% {
+      transform: translateY(-50px);
+    }
+    50% {
+      transform: translateY(50px);
+    }
+    100% {
+      transform: translateY(-50px);
+    }
+  }
+  @keyframes floatCircle {
+    0% {
+      transform: translateY(50px);
+    }
+    50% {
+      transform: translateY(-50px);
+    }
+    100% {
+      transform: translateY(50px);
+    }
+  }
+  @keyframes floatTriangle {
+    0% {
+      transform: translateY(-100px);
+    }
+    50% {
+      transform: translateY(100px);
+    }
+    100% {
+      transform: translateY(-100px);
+    }
+  }
+  @keyframes floatTriangle1 {
+    0% {
+      transform: translateY(-150px);
+    }
+    50% {
+      transform: translateY(150px);
+    }
+    100% {
+      transform: translateY(-150px);
+    }
+  }
+  @keyframes floatSquare {
+    0% {
+      transform: translateX(-100px) rotate(45deg);
+    }
+    50% {
+      transform: translateX(100px) rotate(45deg);
+    }
+    100% {
+      transform: translateX(-100px) rotate(45deg);
+    }
+  }
+  @keyframes floatSquare1 {
+    10% {
+      transform: translateX(-200px) rotate(45deg);
+    }
+    60% {
+      transform: translateX(200px) rotate(45deg);
+    }
+    100% {
+      transform: translateX(-200px) rotate(45deg);
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fadeInDown {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  /* Additional Animations */
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1.4);
+    }
+  }
+  .animated-text {
+    display: inline-block;
+    font-size: 18px;
+    color: #e1dede;
+    animation: pulse 3.5s ease-in-out infinite alternate;
+  }
+  .animated-text, input[type='text'], input[type='password'],input[type='submit']{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+
+  }

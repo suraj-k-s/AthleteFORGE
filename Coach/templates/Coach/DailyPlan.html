@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table border="2" align="center">
+            <tr>
+                <th>
+                    Day
+                </th>
+                <td>
+                    <input type="text" name="txt_day" id="txt_day">
+                </td>
+            <tr>
+                <th>
+                    Workout
+                </th>
+                <td>
+                    <input type="text" name="txt_workout" id="txt_workout">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="submit" id="btn_submit" value="Submit">Submit</button>
+                    <button type="reset">Reset</button>
+                </td>
+            </tr>
+            </tr>
+        </table>
+    </form>
+    <br>
+    <table border="2" align="center">
+        <tr>
+            <th>
+                Day
+            </th>
+            <th>
+                Workouts
+            </th>
+            <th>
+                Add workout
+            </th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>
+                {{i.dailyplan_day }}
+            </td>
+            <td>
+                {{ i.dailyplan_wcount }}
+            </td>
+            <td><a href="{% url 'webcoach:Workout' i.id %}">Add Workout</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

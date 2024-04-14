@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form method="post" action="" enctype="multipart/form-data">
+        \{% csrf_token %}
+        <table border="2" align="center">
+            <tr>
+                <td>
+                    Name
+                </td>
+                <td>
+                    <select name="txt_event" id="txt_event">
+                        <option value="">
+                            select event
+                        </option>
+                        {% for i in data %}
+                    <option value="{{i.id}}">{{i.event_name}}</option>
+                   {% endfor %}
+                </select>
+
+                </td>
+                </tr>
+                <tr>
+                    <td>
+                        Duration
+                    </td>
+                    <td>
+                        <input type="text" name="txt_duration" id="txt_duration">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Details
+                    </td>
+                    <td>
+                        <textarea name="txt_details" id="txt_details"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <button type="submit" name="btn_save" id="btn_save" value="Save">Save</button>
+                        <button type="reset" name="btn_reset" id="btn_reset" value="Reset">Reset</button>
+                    </td>
+                </tr>
+        </table>
+    </form>
+    <br>
+    <br>
+    <table border="2" align="center">
+        <tr>
+            <th>
+                Sl.No
+            </th>
+            <th>
+                Event Name
+            </th>
+            <th>
+                Duration
+            </th>
+            <th>
+                Details
+            </th>
+            <th>
+                Action
+            </th>
+            <th>
+                Dailyplane
+            </th>
+        </tr>
+        {% for i in tdata %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>
+                {{ i.event.event_name }}
+            </td> 
+            <td>
+                {{ i.training_duration }}
+            </td>
+            <td>
+                {{ i.training_details }}
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <a href="{% url 'webcoach:DailyPlan' i.id %}">Add Dailyplan</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

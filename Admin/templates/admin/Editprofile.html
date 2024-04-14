@@ -1,0 +1,37 @@
+{% extends 'Admin/Header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Edit Profile</title>
+</head>
+
+<body>
+
+<form action="#" method="post" class="form-reg"  enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="form-group first">
+								<label for="txt_name">Name</label>
+								<input type="text" class="form-control" placeholder="Name"
+									value="{{data.admin_name}}"
+                                    name="txt_name" id="txt_name" required autocomplete="off">
+							</div>
+              <div class="form-group first">
+								<label for="txt_number">Contact</label>
+								<input type="text" class="form-control" placeholder="Contact Number" value="{{data.admin_contact}}"
+									name="txt_contact" id="txt_contact" required autocomplete="off">
+							</div>
+              
+                            <div align="center">
+                            <div class="col-sm-3">
+                <input type="submit" name="btn_save" id="btn_save" value="SAVE" class="btn btn-success" />
+                </div>
+                </div>
+
+</form>
+
+</body>
+</html>
+{% endblock content %}

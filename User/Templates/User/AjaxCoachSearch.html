@@ -1,0 +1,27 @@
+{% for i,j in coach %}
+<div class="col-lg-4 col-md-6 col-sm-6 col-12 post" data-aos="fade-up" data-aos-delay="100" style="margin-bottom:1rem">
+    <div class="media media-custom d-block mb-4 h-100">
+      <div class="mb-4 d-block" align="center"><img  src="{{i.coach_photo.url}}" alt="Image placeholder" class="img-fluid" style="height:250px" align="center"></div>
+      <div class="media-body">
+        <span class="meta-post">Coach: {{i.coach_name}}</span>
+        <p>{{i.event.event_name}}</p>
+        <p>
+          {% for k in ar %} {% if k <= j %}
+          <i class="fas fa-star text-warning"></i>
+          {% else %}
+          <i class="fas fa-star star-light"></i>
+          {% endif %} {% endfor %}
+        </p>
+       <p>
+          <a href="{% url 'webuser:Follow' i.id %}">Follow</a>&nbsp;&nbsp;
+          <a href="{% url 'webuser:chatpage' i.id %}">Chat</a>
+       </p>
+        <a href="{% url 'webuser:ViewCoach' i.id %}">More..</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+{% endfor %}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+   
+
+    {% csrf_token %}
+        <h2>Welcome Coach</h2>
+        {{data.coach_name}}
+        <br>
+<a href="{% url 'webcoach:ViewCoach'  %}">View Profile</a><br>
+<a href="{% url 'webcoach:Trainingdetails'  %}">Add Training</a><br>
+
+<a href="{% url 'webcoach:AddSubscription'  %}">Add Subscription</a><br>
+<a href="{% url 'webcoach:Followers' %}">View Followers</a><br>
+      
+     </body></html>

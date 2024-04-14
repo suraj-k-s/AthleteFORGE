@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>#</td>
+            <td>Details</td>
+            <td>Amount</td>
+            <td>Action</td>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.subscription.subscription_details}}</td>
+            <td>{{i.subscription.subscription_amount}}</td>
+            <td>
+                {% if i.status == 0 %}
+                <a href="{% url 'webuser:subpayment' i.id  %}">Subscribe</a></td>
+                {% else %}
+                Payed
+                {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

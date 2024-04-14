@@ -1,0 +1,53 @@
+{% extends 'Admin/Header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVENT</title>
+</head>
+<body>
+    <div class="container">
+        <form id="form1" name="form1" method="post" action="">
+            {% csrf_token %}
+            <div class="row mb-3">
+                <label for="txt_event" class="col-sm-2 col-form-label">EVENT</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="txt_event" id="txt_event" value="{{eeid.event_name}}" required/>
+                </div>
+                <div class="col-sm-3">
+                    <input type="submit" name="btn_save" id="btn_save" value="SAVE" class="btn btn-success" />
+                </div>
+            </div>
+        </form>
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">SL.NO</th>
+                    <th scope="col">EVENT</th>
+                    <th scope="row">DELETE</th>
+                    <th scope="row">UPDATE</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in event %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.event_name}}</td>
+                    <td><a href="{% url 'xadmin:delevent' i.id  %}" class="btn btn-danger">DELETE</a></td>
+                    <td><a href="{% url 'xadmin:upevent' i.id %}" class="btn btn-danger">UPDATE</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+{% if msg %}
+        <script>
+            alert('{{msg}}')
+        </script>
+        {% endif %}
+</html>
+{% endblock content %}

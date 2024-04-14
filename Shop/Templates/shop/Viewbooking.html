@@ -1,0 +1,130 @@
+
+{% extends 'Shop/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Booking Details</title>
+
+    <!-- Add Bootstrap CSS link -->
+    <style>
+        /* Custom styles for specific elements */
+
+        .header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background-color: #d4a762;
+            color: #000000;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .property-info {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .property-info p {
+            margin: 10px 0;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-group input[type="date"],
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn-custom {
+            background-color: #d4a762;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #e6a008;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header text-center">
+            Room Details
+        </div>
+        {% for i in Bookings %}
+
+        <div class="property-info">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>User Name:</label>
+                       &nbsp; &nbsp;                       
+                       &nbsp; &nbsp;
+
+                       <strong style="color: black;">{{i.user.user_name}}</strong>
+                        <p><label>Total Amount:</label>
+                        &nbsp; &nbsp;
+                        <strong style="color: black;">{{i.booking_amount}}</strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Status:</label>
+                       &nbsp; &nbsp;&nbsp; &nbsp;                       
+                       &nbsp; &nbsp;&nbsp; &nbsp;                       
+                       &nbsp; &nbsp;
+                       {% if i.booking_status == "2"  %}
+                       <strong  style="color: rgb(5, 247, 46);">PAYED</strong>
+            
+            
+            {% elif i.booking_status == "1"  %}
+            
+                 <strong style="color: rgb(10, 169, 248);">CASH ON DELIVERY</strong>
+                 
+                 {% elif i.booking_status == "3"  %}
+            <strtong style="color: red;">CANCELD</strtong>
+            {% endif %}
+                        <p><label>View Products:</label>
+                        &nbsp; &nbsp;
+                        <a href="{% url 'webshop:BookingProducts' i.id %}" class="btn btn-custom">View product</a>
+                        
+                        </p>
+                        
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+       
+    </div>
+
+    <!-- Add Bootstrap JS and jQuery (for Bootstrap JavaScript components) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+   
+</body>
+
+</html>
+{% endblock content %}

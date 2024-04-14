@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table border="2" align="center">
+            <tr>
+                <th>
+                   Name
+                </th>
+                <td>
+                    <input  type="text" name="txt_name" id="txt_name">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Discription
+                </th>
+                <td>
+                    <textarea name="txt_discription" id="txt_discription"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    File
+                </th>
+                <td>
+                    <input type="file" name="txt_file" id="txt_file">
+                </td>
+            </tr>
+            {% if alt == 1 %}
+            {% else %}
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="submit" name="btn_submit" id="btn_submit" value="submit">Submit</button>
+                    <button type="reset" value="reset">Reset</button>
+                </td>
+            </tr>
+            {% endif %}
+        </table>
+    </form>
+    {% if msg %}
+    <script>
+        alert("{{msg}}")
+        window.location = "{% url 'webcoach:Workout' ID %}"
+    </script>
+    {% endif %}
+    <br>
+    <table border="2" align="center">
+        <tr>
+            <th>
+                Sl. No.
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Discription
+            </th>
+            <th>
+                File
+            </th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.workout_name}}</td>
+            <td>{{i.workout_discription}}</td>
+            <td><img src="{{i.workout_file.url}}" width="100" height="100" alt=""></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

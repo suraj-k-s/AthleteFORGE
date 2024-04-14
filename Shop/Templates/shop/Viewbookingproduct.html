@@ -1,0 +1,48 @@
+{% extends 'Shop/header.html' %}
+{% load static %}
+{% block content %}
+{% load mathfilters %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product detials</title>
+</head>
+
+<body>
+    <table border="1" cellpadding="5" align="center">
+        <tr>
+            {% for i in data %}
+            <td>
+                <p><img src="{{i.product.product_photo.url}}" alt="product photo" height="200" width="200"></p>
+                <!--Image-->
+                <p>{{i.product.product_name}}</p>
+                <p>{{i.cart_quantity}}</p>
+
+                <p>{{i.product.scategory.scategory_name}}</p>
+                <p>{{i.cart_quantity|mul:i.product.product_price}}</p>
+                {% if i.cart_status == "1" %}
+                <p><a href="{% url 'webshop:Packed' i.id %}">Packed</a></p>
+                {% elif i.cart_status == "2" %}
+                <p><a href="{% url 'webshop:Shipped' i.id %}">Shipped</a></p>
+                {% elif i.cart_status == "3" %}
+                <p><a href="{% url 'webshop:Delivered' i.id %}">Deliverd</a></p>
+                {% elif i.cart_status == "4" %}
+                <p style="color: rgb(3, 233, 118);">Item deliverd</p>
+                {% else %}
+                <p style="color: rgb(220, 11, 11);">Item Canceld</p>
+                {% endif %}
+            </td>
+            {% if forloop.counter|divisibleby:4 %}
+        </tr>
+        <tr>
+            {% endif %}
+            {% endfor %}
+        </tr>
+    </table>
+</body>
+
+</html>
+{% endblock content %}

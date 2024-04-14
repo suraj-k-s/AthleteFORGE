@@ -1,0 +1,143 @@
+{% extends 'Admin/Header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>USER VERIFICATION</title>
+
+
+  <style>
+ 
+
+    .verification-list {
+      /* margin-top: 300px; */
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .verification-card {
+      background: linear-gradient(135deg, #3498db, #9b59b6);
+      color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .verification-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(135deg, #2980b9, #8e44ad);
+    }
+
+    .verification-info {
+      padding: 20px;
+    }
+
+    .user-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .user-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .user-avatar:hover {
+      transform: scale(1.05);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    p {
+      margin: 5px 0;
+      font-size: 16px;
+      opacity: 0.8;
+    }
+
+    .verification-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+
+    button {
+      background-color: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
+      font-size: 16px;
+      transition: background-color 0.2s, color 0.2s, transform 0.2s ease-in-out, border 0.2s;
+    }
+
+    .accept-button:hover {
+      background-color: #4CAF50;
+      border-color: #4CAF50;
+      transform: scale(1.05);
+    }
+
+    .reject-button:hover {
+      background-color: #FF5733;
+      border-color: #FF5733;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+    {% csrf_token %}
+    
+  <div class="verification-list">
+    {% for i in vid %}
+    <div class="verification-card">
+      <div class="verification-info">
+        <div class="user-avatar">
+          <img src="{{i.user_photo.url}}">
+        </div>
+        <h2>{{i.user_name}}</h2>
+        <p>Email: {{i.user_email}}</p>
+        <p>Phone: {{i.user_contact}}</p>
+        <p>Gender: {{i.user_gender}}</p>
+        <p>DOB: {{i.user_dob}}</p>
+        <p>Place: {{i.place.place_name}}</p>
+        <p>Proof: <a href="{{i.user_proof.url}}" target="_blank">View Document</a></p>
+      </div>
+      <div class="verification-actions">
+      <a href="{% url 'xadmin:AcceptUser' i.id  %}">
+        <button class="accept-button">Accept</button>
+      </a>
+      <a href="{% url 'xadmin:RejectUser' i.id  %}" >
+      <button class="reject-button">Reject</button>
+      </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  
+</body>
+
+
+</html>
+{% endblock content %}

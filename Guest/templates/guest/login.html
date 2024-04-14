@@ -1,0 +1,67 @@
+{%  load static  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+       
+       
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="{%  static  'Main/css/bootstrap.min.css'  %}" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="{%  static  'Login/style.css'  %}" rel="stylesheet">
+        <!-- <link href="{%  static  'Main/css/style.css'  %}" rel="stylesheet"> -->
+<title>Login</title>
+<style>
+  
+</style>
+</head>
+<body>
+<div class="container">
+  <h2><span class="animated-text">Login</span></h2>
+  <form method="post" action="" >
+    {% csrf_token %}
+    <input type="text" id="txt_email" name="txt_email" placeholder="email" required>
+    <input type="password" id="txt_email" name="txt_password" placeholder="Password" required>
+    <input type="submit" value="Login">
+    <h6>Do you have an account?<a style="color: blue !important;" href="{% url 'webguest:Index'%}">Register now</a></h6>
+  
+  </form>
+
+</div>
+ <p>
+    <div class="col-lg-3 col-md-6">
+      <div class="footer-item">
+          
+          <div class="d-flex flex-column align-items-start">
+              <div class="footer-icon d-flex">
+                <a class="btn btn-primary btn-sm-square me-5 rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                  <a class="btn btn-primary btn-sm-square me-5 rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="btn btn-primary btn-sm-square me-5 rounded-circle"><i class="fab fa-instagram"></i></a>
+                  <a href="#" class="btn btn-primary btn-sm-square rounded-circle"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+          </div>
+      </div>
+  </div>
+   </p>
+<div class="background-shapes">
+  <div class="circle" style="top: 20%; left: 10%; width: 80px; height: 80px;"></div>
+  <div class="circle" style="top: 50%; left: 80%; width: 120px; height: 120px;"></div>
+  <div class="triangle" style="top: 10%; left: 50%; transform-origin: center;"></div>
+  <div class="triangle1" style="top: 50%; left: 10%; transform-origin: right;"></div>
+  <div class="square" style="top: 70%; left: 30%;"></div>
+</div>
+
+</body>
+{% if msg %}
+        <script>
+            alert('{{msg}}')
+        </script>
+        {% endif %}
+        </html>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product detials</title>
+</head>
+<body>
+    <form  method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td colspan="2" align="center">
+                    <img src="{{data.product_photo.url}}" alt="" height="200" width="200">
+                </td>
+            </tr>
+        
+        <tr>
+            <td>
+        <label for="name"> Name:</label></td>
+        <td>{{data.product_name}}</td>
+ </tr>
+        <tr>
+            <td>
+        Price:</td>
+        <td>{{data.product_price}}</td>
+ </tr>
+ <tr>
+    <td>
+        Category:
+    </td>
+    <td>
+        {{data.scategory.category.categorys_name}}
+    </td>
+   </tr>
+   <tr>
+    <td>Brand:</td>
+    <td>
+        {{data.scategory.scategory_name}}
+    </td>
+   </tr>
+   <tr>
+    <td>
+        Shop:
+    </td>
+    <td>
+        {{data.shop.shop_name}}
+    </td>
+   </tr> 
+<tr>
+    <td align="center">
+        <a href="{% url 'webuser:AddCart' data.id%}">Add Cart</a>
+    </td>
+</tr>
+
+        </table>
+        {% if msg %}
+        <script>
+            alert('{{msg}}')
+            window.location='/User/ProductDetails/{{data.id}}'
+        </script>
+        {% endif %}
+</body>
+
+    </html>

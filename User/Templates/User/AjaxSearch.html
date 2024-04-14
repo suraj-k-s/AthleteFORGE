@@ -1,0 +1,39 @@
+{% for i in products %}
+<tr>
+    <td colspan="2" align="center">
+        <img src="{{i.product_photo.url}}" alt="" height="200" width="200">
+</td>
+</tr>
+<tr>
+<td>
+    Name:
+</td>
+<td>
+    {{i.product_name}}
+</td>
+</tr>
+<tr>
+    <td>
+        Brand:
+    </td>
+    <td>
+        {{i.scategory.scategory_name}}
+    </td>
+
+</tr>
+<tr>
+    <td>
+        Price:
+    </td>
+    <td>
+        {{i.product_price}}
+    </td>
+</tr>
+<tr>
+    <td align="center">
+        <button>
+            <a href="{% url 'webuser:ProductDetails' i.id %}">View Details</a>
+        </button>
+    </td>
+</tr>
+{% endfor %}

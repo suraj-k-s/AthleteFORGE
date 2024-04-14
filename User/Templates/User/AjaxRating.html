@@ -1,0 +1,5 @@
+{% for i in data %}
+{{i.user_name}}
+{% for j in ar %} {% if j <= i.rating_data %} {% else %} {% endif %} {% endfor %}
+{{i.user_review}}
+{% endfor %} {{five}} {{four}} {{three}} {{two}} {{one}}

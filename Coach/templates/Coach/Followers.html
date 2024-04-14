@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <table border="2" align="center">
+        <tr>
+            <td align="center" colspan="2">
+                <h2>MY FOLLOWERS</h2>
+            </td>
+        </tr>
+        {% for i in data %}
+       
+        <tr>
+            <td>
+                Name:
+            </td>
+            <td>
+                {{i.user.user_name}}
+            </td>
+            <td><a href="{% url 'webcoach:chatpage' i.id %}">Chat</a></td>
+        </tr>
+     {% endfor %}
+</body>
+</html>

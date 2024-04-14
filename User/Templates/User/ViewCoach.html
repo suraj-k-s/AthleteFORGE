@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        <table border="2" align="center">
+            <tr>
+                <td colspan="2" align="center">
+                    <img src="{{data.coach_photo.url}}" alt="image">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Name:
+                </td>
+                <td>
+                    {{data.coach_name}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Event:
+                </td>
+                <td>
+                    {{data.event.event_name}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Gender:
+                </td>
+                <td>
+                    {{data.coach_gender}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    View Training
+                </td>
+                <td>
+              <a href="{% url 'webuser:Trainingdetails' data.event_id %}">View Training</a>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2">
+                    {% if value ==  1 %}
+                    <a href="{% url 'webuser:chatpage' data.id %}">Chat</a>
+                    {% else %}
+                    Get a personal coach subscribe him.... <a href="{% url 'webuser:subscribe' data.id %}">Subscribe</a>
+                    {% endif %}
+                    <br>
+                    
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

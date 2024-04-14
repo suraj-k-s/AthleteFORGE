@@ -1,0 +1,68 @@
+{% extends 'Admin/Header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DISTRICT</title>
+</head>
+<body>
+    <div class="container">
+        <form id="form1" name="form1" method="post" action="">
+            {% csrf_token %}
+            <div class="row mb-3">
+                <label for="txt_state" class="col-sm-2 col-form-label">STATE</label>
+                <div class="col mb-3">
+                    <select name="txt_state" id="txt_state">
+                        <option value="">-Select State-</option>
+                        {% for i in state %}
+                        <option value="{{i.id}}">{{i.state_name}}</option>
+                       {% endfor %}
+                    </select>
+                </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="txt_district" class="col-sm-2 col-form-label">DISTRICT</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="txt_district" id="txt_district" value="{{dist.district_name}}" required/>
+                    </div>
+              
+              
+                    <div class="col mb-3">
+                        <input type="submit" name="btn_save" id="btn_save" value="SAVE" class="btn btn-success" />
+                    </div>
+                </div>
+        </form>
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">SL.NO</th>
+                    <th scope="col">STATE</th>
+                    <th scope="col">DISTRICT</th>
+                    <th scope="row">DELETE</th>
+                    <th scope="row">UPDATE</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in dist %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.state.state_name}}</td>
+                    <td>{{i.district_name}}</td>
+                    <td><a href="{% url 'xadmin:deldistrict' i.id  %}" class="btn btn-danger">DELETE</a></td>
+                    <td><a href="{% url 'xadmin:updistrict' i.id %}" class="btn btn-danger">UPDATE</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+{% if msg %}
+        <script>
+            alert('{{msg}}')
+        </script>
+        {% endif %}
+</html>
+{% endblock content %}

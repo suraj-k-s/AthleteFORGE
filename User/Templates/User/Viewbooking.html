@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Booking</title>
+</head>
+<style>
+    body {
+        
+        background-size: 1540px 900px;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .main-con {
+        margin-top: 100px;
+    }
+
+    .tb {
+        background-color: rgba(255, 255, 255, 0.567);
+        margin-left: 20px;
+        border-radius: 9px;
+    }
+
+    .tb:hover {
+        transition: transform 0.5s;
+        transform: scale(0.9);
+        box-shadow: 0 30px 30px black;
+    }
+
+    .bt {
+        background-color: transparent;
+        border: none;
+    }
+</style>
+<body>
+                           
+    
+    <form action="" method="post">
+        {% csrf_token %}
+            <table class="main-con">
+                <tr>
+                    <td>
+                        <!-- <div style="border:1px solid black;margin:10px;padding:5px"> -->
+                        <table width="700" class="tb">
+                            <tr>
+                                <th colspan="6">Booking Details </th>
+                            </tr>
+                            <tr>
+                                <th>#</th>
+                                <th>Date</th>
+                                
+                                <th>Total Amount</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                                <th>Complaint</th>
+                            </tr>
+                            {% for i in data %}
+                            <tr>
+                                <td>{{forloop.count}}</td>
+                                <td>{{i.booking_date}}</td>
+                               
+                                <td>{{i.booking_amount}}</td>
+                                
+                                {% if i.booking_status == "2"  %}
+                                <td style="color: red;" >Payed</td>
+                                
+                                
+                                {% elif i.booking_status == "1"  %}
+                                
+                                     <td style="color: red;" >Cash On Delivery</td>
+                                     
+                                     {% elif i.booking_status == "3"  %}
+                                <td style="color: red;">Canceld</td>
+                                
+                                    <!-- <td style="color: green;">Delivered</td> -->
+                                {% endif %}                             
+                                <td><a href="{% url 'webuser:BookingProducts' i.id %}">View product</a> </td>
+                                
+                                    {% endfor %}
+                                    
+                                </tr>
+                               
+                            
+                        </table>
+                        </td>
+                        </tr>
+                        </table>
+                        </form>
+                        </body>
+                        </html>

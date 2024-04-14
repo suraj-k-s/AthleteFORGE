@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+<body>
+    <h2>Compare Numbers</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="number1">Number 1:</label>
+        <input type="text" name="number1" required><br>
+
+        <label for="number2">Number 2:</label>
+        <input type="text" name="number2" required><br>
+
+        <label for="number3">Number 3:</label>
+        <input type="text" name="number3" required><br>
+
+        <button type="submit">Compare</button>
+    </form>
+
+
+        <p>The largest number is: {{ result }}</p>
+  
+</body>
+</html>

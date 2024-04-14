@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Search</title>
+<style>
+    #searchInput {
+        width: 300px;
+        padding: 10px;
+        font-size: 16px;
+    }
+    #searchResults {
+        margin-top: 10px;
+    }
+    .product {
+        margin-bottom: 5px;
+        padding: 5px;
+        border: 1px solid #ccc;
+    }
+</style>
+</head>
+<body>
+
+<h1>Product Search</h1>
+
+<input type="text" id="searchInput" placeholder="Search for a product...">
+<table id="result">
+    {% for i in data %}
+    <tr>
+        <td colspan="2" align="center">
+            <img src="{{i.product_photo.url}}" alt="" height="200" width="200">
+    </td>
+    </tr>
+    <tr>
+    <td>
+        Name:
+    </td>
+    <td>
+        {{i.product_name}}
+    </td>
+</tr>
+    <tr>
+        <td>
+            Brand:
+        </td>
+        <td>
+            {{i.scategory.scategory_name}}
+        </td>
+
+    </tr>
+    <tr>
+        <td>
+            Price:
+        </td>
+        <td>
+            {{i.product_price}}
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <button>
+                <a href="{% url 'webuser:ProductDetails' i.id %}">View Details</a>
+            </button>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+
+
+
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+     $("#searchInput").keyup(function () {
+        var pname = $(this).val();
+        var ur = "{% url 'webuser:ajaxsearch' %}";
+        $.ajax({
+            url: ur,
+            data: { pname: pname, },
+            success: function (data) {
+                $("#result").html(data);
+            },
+        });
+    });
+</script>

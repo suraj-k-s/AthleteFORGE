@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table border="2">
+        <tr>
+    <td>First name</td>
+    <td><input type="text" name="txt_fname"></td></tr>
+    <tr><td>Last name</td>
+    <td><input type="text" name="txt_lname"></td></tr>
+    <tr><td>Gender</td>
+    <td><input type="radio" name="rdo_gender" value="F" >Female
+        <input type="radio" name="rdo_gender" value="M" >Male</td></tr>
+        <tr><td>Marital</td>
+    <td><input type="radio" name="rdo_marital" value="S" >Single
+        <input type="radio" name="rdo_marital" value="M" >Married</td></tr>
+    <tr><td>Department</td>
+    <td><select name="ddl_dept">
+        <option value="">Select</option>
+        <option value="Psy">Psychology</option>
+        <option value="Sci">Science</option>
+</select></td></tr>
+<tr><td>Basic Salary</td>
+<td><input type="text" name="txt_salary"></td></tr>
+    <tr><td><input type="submit" name="btn_save" value="Submit">
+    <input type="resent" name="btn_cancel" value="Cancel"></td>
+    </tr></table>
+    <table border="2">
+        <tr><td>Name</td>
+        <td>{{fname}}{{lname}}</td></tr>
+        <tr><td>Gender</td>
+        <td>{{gen}}</td></tr>
+        <tr><td>Marital</td>
+        <td>{{mar}}</td></tr>
+        <tr><td>Department</td>
+        <td>{{dept}}</td></tr>
+        <tr><td>Basic Salary</td>
+        <td>{{bs}}</td></tr>
+        <tr><td>TA</td>
+        <td>{{ta}}</td></tr>
+        <tr><td>DA</td>
+        <td>{{da}}</td></tr>
+        <tr><td>HRA</td>
+        <td>{{hra}}</td></tr>
+        <tr><td>LIC</td>
+        <td>{{lic}}</td></tr>
+        <tr><td>PF</td>
+        <td>{{pf}}</td></tr>
+        <tr><td>Deduction</td>
+        <td>{{dec}}</td></tr>
+        <tr><td>NET</td>
+        <td>{{net}}</td></tr>
+</table>
+</form>
+    
+</body>
+</html>

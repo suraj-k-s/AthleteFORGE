@@ -1,0 +1,163 @@
+{% extends 'User/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beautiful Profile View</title>
+  <style>
+  
+    .profile-container {
+      background: linear-gradient(to bottom, #f0f0f0, #d9d9d9);
+      border: 2px solid #ccc;
+      left: 36%;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 80%;
+      max-width: 500px;
+      
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .profile-header {
+      background-color: #d4a762;
+      color: #fff;
+      padding: 30px;
+      text-align: center;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .profile-header h1 {
+      margin: 0;
+      font-size: 50px;
+    }
+
+    .profile-content {
+      padding: 30px;
+      text-align: center;
+    }
+
+    .profile-picture {
+      position: relative;
+      display: inline-block;
+      border-radius: 50%;
+      overflow: hidden;
+      width: 150px;
+      height: 150px;
+      margin-bottom: 20px;
+      border: 5px solid #d4a762;
+      background-color: #fff;
+      transform: scale(1);
+      transition: transform 0.3s ease;
+    }
+
+    .profile-picture:hover {
+      transform: scale(1.1);
+    }
+
+    .profile-picture img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-details {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .profile-details li {
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .button {
+      background-color: #d4a762;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 15px 30px;
+      margin: 0 20px;
+      font-size: 17px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #0b100b;
+    }
+
+    @media (max-width: 768px) {
+      .profile-container {
+        border-radius: 15px;
+      }
+      
+      .profile-picture {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .profile-header h1 {
+        font-size: 100px;
+      }
+      
+      .profile-details li {
+        font-size: 16px;
+      }
+      
+      .button {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin: 0 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+    
+
+<div class="profile-container" align="center">
+  <div class="profile-header">
+    <h1>{{data.user_name}}</h1>
+  </div>
+  <div class="profile-content">
+    <div class="profile-picture">
+      <img src="{{data.user_photo.url}}" alt="Profile Picture">
+    </div>
+    <ul class="profile-details">
+      
+      <li><strong><u>EMAIL</u>&nbsp;:</strong>&nbsp;&nbsp;{{data.user_email}}</li>
+      <li><strong><u>CONTACT</u>&nbsp;:</strong>&nbsp;&nbsp;{{data.user_contact}}</li>
+      <li><strong><u>ADDRESS</u>&nbsp;:</strong>&nbsp;&nbsp;{{data.user_address}}</li>
+      <li><strong><u>LOCATION</u>&nbsp;:</strong>&nbsp;&nbsp;{{data.place.district.state.state_name}},&nbsp;{{data.place.district.district_name}},&nbsp;{{data.place.place_name}}</li>
+      <li><strong><u>DOB</u>&nbsp;:</strong>&nbsp;&nbsp;{{data.user_dob}}</li>
+
+      <!-- Add more details as needed -->
+    </ul>
+    <div class="button-container">
+        <a href="#" class="button">Edit Profile</a>   
+        <a href="#" class="button">Change Password</a>
+    </div>
+        
+        
+      
+  </div>
+</div>
+
+</body>
+</html>
+
+{% endblock content %}
